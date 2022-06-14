@@ -1,3 +1,3 @@
-module github.com/mhazhary/go-playlist
+module go-playlist
 
 go 1.18

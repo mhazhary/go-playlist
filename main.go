@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mhazhary/go-playlist/playlist"
+	"go-playlist/playlist"
 )
 
 func main() {
