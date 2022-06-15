@@ -7,8 +7,11 @@ import (
 	"go-playlist/playlist"
 )
 
+type testing playlist.Input
+
 func main() {
-	var input, title, url string
+	// var menu, title, url string
+	var menu string
 	fmt.Println("Welcome to Go-Playlist!")
 
 	for {
@@ -17,15 +20,16 @@ func main() {
 		fmt.Println("2.  Print your playlist")
 		fmt.Println("00. EXIT")
 		fmt.Print("Menu: ")
-		fmt.Scanln(&input)
-		switch input {
+		fmt.Scanln(&menu)
+		switch menu {
 		case "1":
 			fmt.Println("=START OF MENU========================")
-			fmt.Print("Title: ")
-			fmt.Scanln(&title)
-			fmt.Print("Link : ")
-			fmt.Scanln(&url)
-			playlist.Add(title, url)
+			// fmt.Print("Title: ")
+			// fmt.Scanln(&title)
+			// fmt.Print("Link : ")
+			// fmt.Scanln(&url)
+			list := playlist.Queuer{Title: "Hello", Url: "World"}
+			testing.Add(list)
 			fmt.Println("=END OF MENU==========================")
 		case "2":
 			fmt.Println("=START OF MENU========================")
