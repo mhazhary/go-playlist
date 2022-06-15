@@ -8,17 +8,16 @@ import (
 )
 
 func main() {
-	var input, title, url string
+	var menu, title, url string
 	fmt.Println("Welcome to Go-Playlist!")
-
 	for {
 		fmt.Println("Choose the menu:")
 		fmt.Println("1.  Input your playlist")
 		fmt.Println("2.  Print your playlist")
 		fmt.Println("00. EXIT")
 		fmt.Print("Menu: ")
-		fmt.Scanln(&input)
-		switch input {
+		fmt.Scanln(&menu)
+		switch menu {
 		case "1":
 			fmt.Println("=START OF MENU========================")
 			fmt.Print("Title: ")
