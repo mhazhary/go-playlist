@@ -9,14 +9,14 @@ type playlists []struct {
 	url   string
 }
 
-var p playlists
+var p *playlists = new(playlists)
 
 func Add(new_title string, new_url string) {
 	if new_title == "" || new_url == "" {
 		fmt.Println("Please input the title and URL")
 		return
 	}
-	p = append(p, struct {
+	*p = append(*p, struct {
 		title string
 		url   string
 	}{
@@ -28,11 +28,11 @@ func Add(new_title string, new_url string) {
 
 func Play() {
 	fmt.Println("Here is your playlist")
-	if p == nil {
+	if *p == nil {
 		fmt.Println("There is no playlist added!")
 	}
-	for i, song := range p {
+	for i, song := range *p {
 		fmt.Printf("%d. Title: %s\n   Link : %s\n", i+1, song.title, song.url)
 	}
-	p = nil
+	*p = nil
 }
