@@ -8,11 +8,9 @@ import (
 )
 
 func main() {
-	var menu string
-	var queue_input playlist.Input
+	var menu, title, url string
+	var p playlist.Playlists
 	fmt.Println("Welcome to Go-Playlist!")
-	queue_input = playlist.Input{Title: "mme"}
-	fmt.Println(queue_input)
 	for {
 		fmt.Println("Choose the menu:")
 		fmt.Println("1.  Input your playlist")
@@ -24,14 +22,14 @@ func main() {
 		case "1":
 			fmt.Println("=START OF MENU========================")
 			fmt.Print("Title: ")
-			fmt.Scanln(&queue_input.Title)
+			fmt.Scanln(&title)
 			fmt.Print("Link : ")
-			fmt.Scanln(&queue_input.Url)
-			queue_input.Add()
+			fmt.Scanln(&url)
+			p.Add(title, url)
 			fmt.Println("=END OF MENU==========================")
 		case "2":
 			fmt.Println("=START OF MENU========================")
-			queue_input.Play()
+			p.Play()
 			fmt.Println("=END OF MENU==========================")
 		case "00":
 			os.Exit(0)
