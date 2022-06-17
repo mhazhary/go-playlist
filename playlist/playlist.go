@@ -4,37 +4,38 @@ import (
 	"fmt"
 )
 
-type Input interface {
-	Add(queuer Queuer)
+type Queue interface {
+	Add(title string, url string)
 	Play()
 }
 
-type Queuer struct {
-	Title string
-	Url   string
+type Playlists []struct {
+	title string
+	url   string
 }
 
-var q []Queuer
-
-func Add(queuer Queuer) {
-	if queuer.Title == "" || queuer.Url == "" {
+func (p *Playlists) Add(new_title string, new_url string) {
+	if new_title == "" || new_url == "" {
 		fmt.Println("Please input the title and URL")
 		return
 	}
-	q = append(q, Queuer{
-		Title: queuer.Title,
-		Url:   queuer.Url,
+	*p = append(*p, struct {
+		title string
+		url   string
+	}{
+		title: new_title,
+		url:   new_url,
 	})
-	fmt.Println("New q has been added!")
+	fmt.Println("New p has been added!")
 }
 
-func Play() {
+func (p *Playlists) Play() {
 	fmt.Println("Here is your playlist")
-	if q == nil {
+	if *p == nil {
 		fmt.Println("There is no playlist added!")
 	}
-	for i, s := range q {
-		fmt.Printf("%d. Title: %s\n   Link : %s\n", i+1, s.Title, s.Url)
+	for i, song := range *p {
+		fmt.Printf("%d. Title: %s\n   Link : %s\n", i+1, song.title, song.url)
 	}
-	q = nil
+	*p = nil
 }
