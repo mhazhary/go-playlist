@@ -4,32 +4,35 @@ import (
 	"fmt"
 )
 
-type queue struct {
+type playlists []struct {
 	title string
 	url   string
 }
 
-var q []queue
+var p playlists
 
-func Add(title string, url string) {
-	if title == "" || url == "" {
+func Add(new_title string, new_url string) {
+	if new_title == "" || new_url == "" {
 		fmt.Println("Please input the title and URL")
 		return
 	}
-	q = append(q, queue{
-		title: title,
-		url:   url,
+	p = append(p, struct {
+		title string
+		url   string
+	}{
+		title: new_title,
+		url:   new_url,
 	})
 	fmt.Println("New queue has been added!")
 }
 
 func Play() {
 	fmt.Println("Here is your playlist")
-	if q == nil {
+	if p == nil {
 		fmt.Println("There is no playlist added!")
 	}
-	for i, s := range q {
-		fmt.Printf("%d. Title: %s\n   Link : %s\n", i+1, s.title, s.url)
+	for i, song := range p {
+		fmt.Printf("%d. Title: %s\n   Link : %s\n", i+1, song.title, song.url)
 	}
-	q = nil
+	p = nil
 }
